@@ -33,7 +33,7 @@ data "aws_ami" "fortimanager_byol" {
 }
 
 module "iam_profile" {
-  source = "terraform-modules/aws_ec2_instance_iam_role"
+  source = "./terraform-modules/aws_ec2_instance_iam_role"
 
   aws_region                  = var.aws_region
   customer_prefix             = var.customer_prefix
@@ -44,7 +44,7 @@ module "iam_profile" {
 # This is an "allow all" security group, but a place holder for a more strict SG
 #
 module "allow_public_subnets" {
-  source = "terraform-modules/aws_security_group"
+  source = "./terraform-modules/aws_security_group"
   aws_region              = var.aws_region
   vpc_id                  = var.vpc_id
   name                    = "${var.fortimanager_sg_name} Allow Public Subnets"

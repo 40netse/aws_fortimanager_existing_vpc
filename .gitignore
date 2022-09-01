@@ -1,0 +1,17 @@
+# Created by .ignore support plugin (hsz.mobi)
+**/.DS_Store
+*~
+**/.idea
+**/__pycache__
+**/*.pyc
+**/venv
+**/site-packages
+\#*#
+*.swp
+*.pyc
+*.lic
+debug.log
+.repo_conf/*.retry
+**/.idea
+**/__pycache__
+ncc-service-account.json
