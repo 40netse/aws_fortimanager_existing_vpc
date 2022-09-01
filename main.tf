@@ -82,7 +82,7 @@ resource aws_security_group "fortimanager_sg" {
 }
 
 module "fortimanager" {
-  source                      = "terraform-modules/aws_ec2_instance"
+  source                      = "./terraform-modules/aws_ec2_instance"
 
   aws_region                  = var.aws_region
   availability_zone           = var.availability_zone
