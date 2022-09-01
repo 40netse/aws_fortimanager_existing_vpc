@@ -86,10 +86,9 @@ module "fortimanager" {
 
   aws_region                  = var.aws_region
   availability_zone           = var.availability_zone
-  vpc_id                      = var.vpc_id
   customer_prefix             = "${var.customer_prefix}-fortimanager"
   environment                 = var.environment
-  name                        = var.fortimanager_instance_name
+  instance_name               = var.fortimanager_instance_name
   instance_type               = var.fortimanager_instance_type
   public_subnet_id            = var.subnet_id
   public_ip_address           = var.ip_address
