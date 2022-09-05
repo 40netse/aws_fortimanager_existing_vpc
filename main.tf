@@ -83,7 +83,7 @@ resource aws_security_group "fortimanager_sg" {
 
 module "fortimanager" {
   source                      = "git::https://github.com/40netse/terraform-modules.git//aws_ec2_instance"
-  aws_ec2_instance_name = "${var.customer_prefix}-${var.environment}-${var.fortimanager_instance_name}"
+  aws_ec2_instance_name       = "${var.customer_prefix}-${var.environment}-${var.fortimanager_instance_name}"
   availability_zone           = var.availability_zone
   instance_type               = var.fortimanager_instance_type
   public_subnet_id            = var.subnet_id
