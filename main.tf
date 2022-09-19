@@ -33,7 +33,7 @@ data "aws_ami" "fortimanager_byol" {
 }
 
 module "iam_profile" {
-  source = "git::https://github.com/40netse/terraform-modules.git//aws_iam_role"
+  source = "git::https://github.com/40netse/terraform-modules.git//aws_ec2_instance_iam_role"
 
   aws_region                  = var.aws_region
   customer_prefix             = var.customer_prefix
