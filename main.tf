@@ -36,33 +36,16 @@ module "iam_profile" {
   source = "git::https://github.com/40netse/terraform-modules.git//aws_ec2_instance_iam_role"
 
   aws_region                  = var.aws_region
-  customer_prefix             = var.customer_prefix
-  environment                 = var.environment
+  customer_prefix             = var.cp
+  environment                 = var.env
 }
 
 #
 # This is an "allow all" security group, but a place holder for a more strict SG
 #
-module "allow_public_subnets" {
-  source = "git::https://github.com/40netse/terraform-modules.git//aws_security_group"
-  aws_region              = var.aws_region
-  vpc_id                  = var.vpc_id
-  name                    = "${var.fortimanager_sg_name} Allow Public Subnets"
-  ingress_to_port         = 0
-  ingress_from_port       = 0
-  ingress_protocol        = "-1"
-  ingress_cidr_for_access = "0.0.0.0/0"
-  egress_to_port          = 0
-  egress_from_port        = 0
-  egress_protocol         = "-1"
-  egress_cidr_for_access  = "0.0.0.0/0"
-  customer_prefix         = var.customer_prefix
-  environment             = var.environment
-}
-
 resource aws_security_group "fortimanager_sg" {
   name = "allow_public_subnets"
-  description = "Allow all traffic from public Subnets"
+  description = "${var.name} Allow all traffic from public Subnets"
   vpc_id = var.vpc_id
   ingress {
     from_port = 0
@@ -83,7 +66,7 @@ resource aws_security_group "fortimanager_sg" {
 
 module "fortimanager" {
   source                      = "git::https://github.com/40netse/terraform-modules.git//aws_ec2_instance"
-  aws_ec2_instance_name       = "${var.customer_prefix}-${var.environment}-${var.fortimanager_instance_name}"
+  aws_ec2_instance_name       = "${var.cp}-${var.env}-${var.fortimanager_instance_name}"
   availability_zone           = var.availability_zone
   instance_type               = var.fortimanager_instance_type
   public_subnet_id            = var.subnet_id

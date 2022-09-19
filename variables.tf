@@ -1,12 +1,14 @@
-
+variable "name" {
+  description = "Fortimanager Name for Tagging"
+}
 variable "aws_region" {
   description = "The AWS region to use"
   default = "us-east-1"
 }
-variable "customer_prefix" {
+variable "cp" {
   description = "Customer Prefix to apply to all resources"
 }
-variable "environment" {
+variable "env" {
   description = "The Tag Environment to differentiate prod/test/dev"
 }
 variable "availability_zone" {
